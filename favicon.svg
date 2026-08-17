@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="蕃茄時光">
+  <path fill="#5e8b78" d="M32 14c-5-7-12-7-16-4 5 1 8 4 9 8-5-2-10 0-12 3 5-1 9 0 12 3h14c3-3 7-4 12-3-2-3-7-5-12-3 1-4 4-7 9-8-4-3-11-3-16 4Z"/>
+  <path fill="#d85e52" d="M32 17C17 17 7 26 7 39c0 12 10 20 25 20s25-8 25-20c0-13-10-22-25-22Z"/>
+  <path fill="#b9473e" d="M32 17c3 3 5 7 5 11h-10c0-4 2-8 5-11Z"/>
+  <circle cx="32" cy="39" r="13" fill="#fffaf3"/>
+  <path d="M32 31v8l6 4" fill="none" stroke="#2d312d" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="32" cy="39" r="2.5" fill="#2d312d"/>
+</svg>
