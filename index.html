@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4eee6" />
+    <meta name="description" content="一個簡潔、可自訂的番茄鐘，協助你專心工作並適時休息。" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <title>蕃茄時光｜專注計時器</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="回到計時器頂端">
+          <span class="brand-mark" aria-hidden="true">●</span>
+          <span>蕃茄時光</span>
+        </a>
+        <button class="icon-button" id="settingsButton" type="button" aria-label="開啟計時設定">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21h-4v-.08A1.7 1.7 0 0 0 8.97 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3v-4h.08A1.7 1.7 0 0 0 4.6 8.94a1.7 1.7 0 0 0-.34-1.88L4.2 7l2.83-2.83.06.06a1.7 1.7 0 0 0 1.88.34A1.7 1.7 0 0 0 10 3.01V3h4v.08a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 20.96 10H21v4h-.08A1.7 1.7 0 0 0 19.4 15Z"/></svg>
+        </button>
+      </header>
+
+      <section class="timer-card" aria-labelledby="sessionLabel">
+        <div class="session-pill" id="sessionLabel">專注時間</div>
+
+        <div class="timer-wrap">
+          <svg class="progress-ring" viewBox="0 0 240 240" aria-hidden="true">
+            <circle class="progress-track" cx="120" cy="120" r="105" />
+            <circle class="progress-value" id="progressCircle" cx="120" cy="120" r="105" />
+          </svg>
+          <div class="timer-display" id="timerDisplay" role="timer" aria-live="off">25:00</div>
+        </div>
+
+        <p class="session-message" id="sessionMessage">今天想專注完成什麼？</p>
+
+        <div class="controls">
+          <button class="secondary-button" id="resetButton" type="button">重設</button>
+          <button class="primary-button" id="startButton" type="button">開始專注</button>
+          <button class="secondary-button" id="skipButton" type="button">跳過</button>
+        </div>
+
+        <div class="round-progress" aria-label="本輪進度">
+          <span>本輪進度</span>
+          <div class="round-dots" id="roundDots"></div>
+          <strong id="roundCount">0 / 4</strong>
+        </div>
+      </section>
+
+      <section class="today-card" aria-label="今日完成數量">
+        <div>
+          <span class="eyebrow">今日累積</span>
+          <strong><span id="todayCount">0</span> 個番茄鐘</strong>
+        </div>
+        <p>每一次專注，都是向前一小步。</p>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <dialog class="settings-dialog" id="settingsDialog">
+      <form method="dialog" id="settingsForm">
+        <div class="dialog-heading">
+          <div>
+            <span class="eyebrow">偏好設定</span>
+            <h2>調整你的節奏</h2>
+          </div>
+          <button class="icon-button" value="cancel" aria-label="關閉設定" type="submit">×</button>
+        </div>
+
+        <div class="settings-grid">
+          <label>專注時間<input id="focusMinutes" type="number" min="1" max="180" required /><span>分鐘</span></label>
+          <label>短休息<input id="shortBreakMinutes" type="number" min="1" max="60" required /><span>分鐘</span></label>
+          <label>長休息<input id="longBreakMinutes" type="number" min="1" max="120" required /><span>分鐘</span></label>
+          <label>長休息前<input id="sessionsBeforeLongBreak" type="number" min="1" max="12" required /><span>個番茄鐘</span></label>
+        </div>
+
+        <label class="toggle-row">
+          <span><strong>自動開始下一階段</strong><small>倒數結束後自動開始休息或專注</small></span>
+          <input id="autoStart" type="checkbox" />
+        </label>
+
+        <div class="notification-row">
+          <div>
+            <strong>桌面通知</strong>
+            <small id="notificationStatus">尚未開啟</small>
+          </div>
+          <button class="outline-button" id="notificationButton" type="button">開啟通知</button>
+        </div>
+
+        <div class="dialog-actions">
+          <button class="secondary-button" value="cancel" type="submit">取消</button>
+          <button class="primary-button" id="saveSettingsButton" value="default" type="submit">儲存設定</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
